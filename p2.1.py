@@ -51,7 +51,9 @@ def remove():
         for row in datafilereader:
             for field in row:
                 if field == name:
-                    print(row)                    
+                    print(row)                                           
+                    delattr(datafile, row)
+                    print(row)
 
     datafile.close()
 
