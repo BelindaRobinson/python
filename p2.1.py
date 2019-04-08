@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 import csv
 
@@ -9,6 +10,16 @@ def menu():
     print("4. Sort Players")
     print("5. Exit")
     print(45 * "-")
+
+def removemenu():
+    print("1. Yes remove this player")
+    print("2. No, try again")
+    print("3. Back to main menu")
+
+def updatemenu():
+    print("1. Yes update this player")
+    print("2. No, try again")
+    print("3. Back to main menu")
     
 def inputint(message):
     while True:
@@ -43,28 +54,50 @@ def add():
 
     datafile.close()
 
-def remove():
-##    NEED TO REMOVE SEARCH DATA
+def search():
     with open ('info.txt', 'r') as datafile:
         name = input("enter name to search")
         datafilereader = csv.reader(datafile)
         for row in datafilereader:
             for field in row:
                 if field == name:
-                    print(row)                                           
-                    delattr(datafile, row)
                     print(row)
+                if field != name:
+                    search()
+    
+
+
+def remove():
+    search()
+    removemenu()
+    choice = input("would you like to remove this player?")
+    if choice=="1":
+        row.clear()
+    if choice=="2":
+        remove()
+    if choice=="3":
+        menu()
 
     datafile.close()
 
+#delattr(datafile, row)
+
+
+
 def update():
-    with open ('info.txt', 'r') as datafile:
-        name = input("enter name to search")
-        datafilereader = csv.reader(datafile)
-        for row in datafilereader:
-            for field in row:
-                if field == name:
-                    print(row)
+    search()
+    updatemenu()
+    coice = input("would you like to update this player")
+    if choice=="1":
+        whatever
+    if choice=="2":
+        update()
+    if choice=="3":
+        menu()
+
+
+
+    
 ##        with open ('info.txt', 'w') as datafile:
 ##        replacename = input("what name would you like to replace it with")
 ##        datafilewrite = csv.write(datafile)
@@ -72,8 +105,10 @@ def update():
 ##            place != row.appened(replacename)
 ##            print(row)
 
-##def sort():
-    
+#def sort():
+#    with open ('info.txt', 'r') as datafile:
+#        print(sorted(datafile)
+        
 loop=True      
   
 while loop: 
