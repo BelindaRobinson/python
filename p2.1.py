@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import sys
 import csv
+import re
 
+#diplays a menu to the user which gives them the option to where they would like to go 
 def menu():
     print(20*"-","MENU",20*"-")
     print("1. Add Player")
@@ -10,7 +12,8 @@ def menu():
     print("4. Sort Players")
     print("5. Exit")
     print(45 * "-")
-    
+
+#checks if the phone number that is enter only contains int and no string 
 def inputint(message):
     while True:
         try:
@@ -20,7 +23,8 @@ def inputint(message):
             continue
         else:
             return phone
-        
+
+#checks if there is an @ symbol in the email as all emails have an @ symbol
 def inputcharacter(message):
     a = '@'
     email = input("please enter you email address: ")
@@ -29,8 +33,9 @@ def inputcharacter(message):
         return email
     else:
         print("wrong format") #HALF DONE
-        inputcharacter(message)   
-    
+        inputcharacter(message)
+
+#adds each input from the user to the csv file on its own line    
 def add():
     name = input("please enter your name: ")
     email = inputcharacter("please enter you email address: ")    
@@ -44,6 +49,7 @@ def add():
 
     datafile.close()
 
+#takes user input and searchs for the csv file for that name, if found there is an option to remove the player 
 def remove():
 ##    NEED TO REMOVE SEARCH DATA
     with open ('info.txt', 'r') as datafile:
@@ -65,6 +71,7 @@ def remove():
                         
     datafile.close()
 
+#takes user input and searchs the csv file for that name, if founf there is an option to update that player
 def update():
     with open ('info.txt', 'r') as datafile:
         name = input("enter name to search")
