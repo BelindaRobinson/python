@@ -23,30 +23,20 @@ def inputint(message):
         
 def inputcharacter(message):
     a = '@'
-    email = input("please enter you email address")
+    email = input("please enter you email address: ")
 
     if a in email:
         return email
     else:
         print("wrong format") #HALF DONE
-        inputcharacter(message)
-
-def inputgroup(message):
-    a = 'yes'    
-    group = input("are you part of a group")
-    if a in group:
-        with open ('info.txt', 'r') as datafile:
-            groupname = input("please enter group name")
-            datafilereader = csv.reader(datafile)
-    else:
-        menu()      
+        inputcharacter(message)   
     
 def add():
-    name = input("please enter your name")
-    email = inputcharacter("please enter you email address")    
-    phone = inputint("please enter your mobile number")
-    character = input("please enter your characters class")       
-    group = inputgroup("are you part of a group")    
+    name = input("please enter your name: ")
+    email = inputcharacter("please enter you email address: ")    
+    phone = inputint("please enter your mobile number: ")
+    character = input("please enter your characters class: ")       
+    group = input("please enter your group name: ")    
     
     with open('info.txt', 'a') as datafile:
         datafilewriter = csv.writer(datafile)
