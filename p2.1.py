@@ -63,9 +63,10 @@ def search():
                 if field == name:
                     print(row)
                 if field != name:
+                    print("try again")
                     search()
     
-
+    datafile.close()
 
 def remove():
     search()
